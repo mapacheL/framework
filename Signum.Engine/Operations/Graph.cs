@@ -258,8 +258,8 @@ namespace Signum.Engine.Operations
                                     }
                                 });
 
-                            if (log != null)
-                                log.SaveLog();
+                            //if (log != null)
+                                //log.SaveLog();
 
                             return tr.Commit(result);
                         }
@@ -538,7 +538,7 @@ namespace Signum.Engine.Operations
                                     log.End = TimeZoneManager.Now;
                                 });
 
-                            log.SaveLog();
+                            //log.SaveLog();
 
                             tr.Commit();
                         }

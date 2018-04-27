@@ -13,8 +13,11 @@ using Signum.Engine.Maps;
 
 namespace Signum.Engine
 {
-    internal static class Saver
+    public static class Saver
     {
+        public static bool NoSave=false;
+
+
         public static void Save(Entity entity)
         {
             Save(new []{entity});
@@ -42,7 +45,12 @@ namespace Signum.Engine
                     if (m is Entity ident)
                         schema.OnPreSaving(ident, ref graphModified);
                 });
-                
+
+
+              
+
+
+
                 HashSet<Entity> wasNew = modifiables.OfType<Entity>().Where(a=>a.IsNew).ToHashSet(ReferenceEqualityComparer<Entity>.Default);
                 HashSet<Entity> wasSelfModified = modifiables.OfType<Entity>().Where(a => a.Modified == ModifiedState.SelfModified).ToHashSet(ReferenceEqualityComparer<Entity>.Default);
 
@@ -72,7 +80,17 @@ namespace Signum.Engine
 
                 log.Switch("SaveGroups");
 
-                SaveGraph(schema, identifiables);
+                if (!NoSave)
+                    SaveGraph(schema, identifiables);
+                else
+                {
+                    foreach (var item in identifiables.Where(e => e.IsNew))
+                    {
+                        item.SetIsNew(false);
+                        //item.Modified = ModifiedState.Clean;
+                    }  
+
+                }
 
                 foreach (var node in identifiables)
                     schema.OnSaved(node, new SavedEventArgs
