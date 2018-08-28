@@ -351,7 +351,7 @@ namespace Signum.Entities.DynamicQuery
             QueryToken result = SubToken(null, qd, options, firstPart);
 
             if (result == null)
-                throw new FormatException("Column {0} not found on query {1}".FormatWith(firstPart, QueryUtils.GetKey(qd.QueryName)));
+                throw new FormatException("Column '{0}' not found on query {1}".FormatWith(firstPart, QueryUtils.GetKey(qd.QueryName)));
 
             foreach (var part in parts.Skip(1))
             {
