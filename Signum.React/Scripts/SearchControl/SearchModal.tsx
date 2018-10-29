@@ -47,7 +47,7 @@ export default class SearchModal extends React.Component<SearchModalProps, { sho
         this.setState({ show: false });
     }
 
-    handleOnExisted = () => {
+    handleOnExited = () => {
         this.props.onExited!(this.okPressed ? this.selectedRows : undefined);
     }
 
@@ -87,7 +87,7 @@ export default class SearchModal extends React.Component<SearchModalProps, { sho
         const okEnabled = this.props.isMany ? this.selectedRows.length > 0 : this.selectedRows.length == 1;
 
         return (
-            <Modal size="lg" show={this.state.show} onExited={this.handleOnExisted} onHide={this.handleCancelClicked}>
+            <Modal size="lg" show={this.state.show} onExited={this.handleOnExited} onHide={this.handleCancelClicked}>
                 <ModalHeaderButtons
                     onClose={this.props.findMode == "Explore" ? this.handleCancelClicked : undefined}
                     onOk={this.props.findMode == "Find" ? this.handleOkClicked : undefined}
