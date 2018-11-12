@@ -16,8 +16,8 @@
   </Type>
   <Type Name="CollectionAnyAllType">
     <Member Name="All" Description="Todos" />
-    <Member Name="Any" Description="Cualquier" />
-    <Member Name="AnyNo" Description="Cualquiera no" />
+    <Member Name="Any" Description="Alguno" />
+    <Member Name="AnyNo" Description="Alguno no" />
     <Member Name="NoOne" Description="Ninguno" />
   </Type>
   <Type Name="CollectionElementType">
